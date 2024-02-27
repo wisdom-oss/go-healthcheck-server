@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2024, licensed under the EUPL-1.2-or-later
+ */
+
 // Package client provides a client which automatically detects the healthcheck
 // server and connects itself to the healthcheck server and triggers the
 // healthcheck and awaits the results.

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2024, licensed under the EUPL-1.2-or-later
+ */
+
 package client
 
 import (

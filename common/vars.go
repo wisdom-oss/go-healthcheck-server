@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2024, licensed under the EUPL-1.2-or-later
+ */
+
 // Package common provides constants shared between the client and the server
 // to allow central management for these variables.
 package common

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2024, licensed under the EUPL-1.2-or-later
+ */
+
 // Package server provides a healthcheck server which allows running health
 // checks directly in the main application. It is compatible with Unix-based
 // operating systems and Windows operating systems

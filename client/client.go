@@ -13,6 +13,7 @@ import (
 	"os"
 	"slices"
 	"strings"
+	"time"
 
 	"github.com/wisdom-oss/go-healthcheck/common"
 )
@@ -58,6 +59,7 @@ func init() {
 		os.Exit(1)
 	}
 	defer conn.Close()
+	conn.SetReadDeadline(time.Now().Add(10 * time.Second))
 	// now write the healthcheck command to the socket
 	_, err = conn.Write([]byte(common.HealthcheckIPCCommand))
 	if err != nil {
@@ -78,7 +80,7 @@ func init() {
 	if response != common.HealthcheckIPCResponse {
 		// since the server did not report successful healthcheck print the
 		// response received and exit with 1
-		fmt.Fprint(os.Stderr, response)
+		fmt.Fprint(os.Stderr, response+"\n")
 		os.Exit(1)
 	}
 

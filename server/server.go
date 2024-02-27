@@ -12,6 +12,7 @@ import (
 	"net"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/wisdom-oss/go-healthcheck/common"
 )
@@ -111,6 +112,7 @@ func (s *HealthcheckServer) Run() {
 			}
 			go func(connection net.Conn) {
 				defer connection.Close()
+				connection.SetReadDeadline(time.Now().Add(10 * time.Second))
 				inputBuf := make([]byte, common.BufferSize)
 				byteCount, err := connection.Read(inputBuf)
 				if err != nil {

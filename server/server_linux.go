@@ -7,6 +7,7 @@ package server
 import (
 	"fmt"
 	"net"
+	"os"
 
 	"github.com/wisdom-oss/go-healthcheck/common"
 )
@@ -19,6 +20,9 @@ import (
 // It initializes the `listener` field and returns an error if it fails to start
 // the server.
 func (s *HealthcheckServer) Start() (err error) {
+	if _, err = os.Create(common.SocketPrefix + s.socketName + ".sock"); err != nil {
+		return err
+	}
 	s.listener, err = net.Listen("unix", common.SocketPrefix+s.socketName+".sock")
 	if err != nil {
 		return fmt.Errorf("unable to start healthcheck server: %w", err)

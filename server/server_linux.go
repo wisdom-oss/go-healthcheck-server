@@ -21,9 +21,6 @@ import (
 // the server.
 func (s *HealthcheckServer) Start() (err error) {
 	os.MkdirAll(common.SocketPrefix, os.ModeDir)
-	if _, err = os.Create(common.SocketPrefix + s.socketName + ".sock"); err != nil {
-		return err
-	}
 	s.listener, err = net.Listen("unix", common.SocketPrefix+s.socketName+".sock")
 	if err != nil {
 		return fmt.Errorf("unable to start healthcheck server: %w", err)

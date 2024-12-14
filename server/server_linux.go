@@ -20,6 +20,7 @@ import (
 // It initializes the `listener` field and returns an error if it fails to start
 // the server.
 func (s *HealthcheckServer) Start() (err error) {
+	os.MkdirAll(common.SocketPrefix, os.ModeDir)
 	if _, err = os.Create(common.SocketPrefix + s.socketName + ".sock"); err != nil {
 		return err
 	}
